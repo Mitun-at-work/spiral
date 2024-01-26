@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class JournalController extends GetxController {
   RxString instrumentType = "BANKNIFTY".obs;
   RxString buyType = "Market Buy Order".obs;
+  RxString marketType = "Bullish Market".obs;
+  RxString statergy = "LTF OB ENTRY".obs;
 
   final FocusNode orderTypeDropDown = FocusNode();
   final FocusNode instrumentChoiceDropDown = FocusNode();

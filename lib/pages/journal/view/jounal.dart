@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:sih24/pages/journal/controller/jounal_controller.dart';
 import 'package:sih24/pages/journal/view/widgets/instrument_choice.dart';
 import 'package:sih24/pages/journal/view/widgets/order_type.dart';
+import 'package:sih24/pages/journal/view/widgets/statergy_choice.dart';
+import 'package:sih24/pages/journal/view/widgets/trend_choice.dart';
 
 class JournalScreen extends StatelessWidget {
   const JournalScreen({super.key});
@@ -10,10 +12,7 @@ class JournalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.auto_awesome),
-      ),
+      floatingActionButton: buildJournalFloat(),
       appBar: AppBar(
         elevation: 1,
         title: const Text(
@@ -37,6 +36,8 @@ class JournalScreen extends StatelessWidget {
                 children: [
                   const OrderType(),
                   const InstrumentChoice(),
+                  const TrendChoice(),
+                  const StatergyChoice(),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
@@ -47,6 +48,7 @@ class JournalScreen extends StatelessWidget {
                       focusNode: controller.entryPriceTextField,
                       keyboardType: const TextInputType.numberWithOptions(),
                       decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.event_seat_outlined),
                         label: Text("Entry Price"),
                         hintText: "Enter your entry price",
                       ),
@@ -63,6 +65,7 @@ class JournalScreen extends StatelessWidget {
                       focusNode: controller.exitPriceTextField,
                       keyboardType: const TextInputType.numberWithOptions(),
                       decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.run_circle_outlined),
                         label: Text("Exit Price"),
                         hintText: "Enter your exit price",
                       ),
@@ -79,6 +82,7 @@ class JournalScreen extends StatelessWidget {
                       focusNode: controller.targetPointsTextField,
                       keyboardType: const TextInputType.numberWithOptions(),
                       decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.favorite_outline),
                         label: Text("Target Points"),
                         hintText: "Enter your target points",
                       ),
@@ -95,11 +99,13 @@ class JournalScreen extends StatelessWidget {
                       focusNode: controller.stopPointsTextField,
                       keyboardType: const TextInputType.numberWithOptions(),
                       decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.shield_outlined),
                         label: Text("Stop Loss Points"),
                         hintText: "Enter your SL points",
                       ),
                     ),
                   ),
+                  const SizedBox(height: 50),
                 ],
               );
             }),
@@ -108,4 +114,16 @@ class JournalScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+buildJournalFloat() {
+  return GetBuilder<JournalController>(builder: (controller) {
+    if (controller.marketType.value == "1") {
+      return FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.auto_awesome),
+      );
+    }
+    return const SizedBox();
+  });
 }

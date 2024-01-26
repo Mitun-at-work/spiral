@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sih24/dependencies/dependency_injection.dart';
-import 'package:sih24/pages/home/view/home.dart';
-import 'package:sih24/pages/journal/view/jounal.dart';
 import 'package:sih24/widgets/build_app.dart';
+import 'package:sih24/widgets/build_route.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,12 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        "jounal": (context) => const JournalScreen(),
-      },
+      routes: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: buildApp(),
-      home: const HomeScreen(),
+      initialRoute: "journal",
+      // home: const HomeScreen(),
     );
   }
 }
