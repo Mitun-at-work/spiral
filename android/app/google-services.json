@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940495523475",
+    "project_id": "sih24-c230a",
+    "storage_bucket": "sih24-c230a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940495523475:android:d85be9e9e4397f65110766",
+        "android_client_info": {
+          "package_name": "com.example.sih24"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh0jnnre7LyD-5CudOxFeOlNMqzv_FrVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
