@@ -7,9 +7,7 @@ class JournalController extends GetxController {
   RxString marketType = "Bullish Market".obs;
   RxString statergy = "LTF OB ENTRY".obs;
 
-  final FocusNode orderTypeDropDown = FocusNode();
-  final FocusNode instrumentChoiceDropDown = FocusNode();
-
+  final FocusNode lotSizeField = FocusNode();
   final FocusNode entryPriceTextField = FocusNode();
   final FocusNode exitPriceTextField = FocusNode();
   final FocusNode targetPointsTextField = FocusNode();
@@ -17,8 +15,7 @@ class JournalController extends GetxController {
 
   @override
   void onInit() async {
-    orderTypeDropDown.addListener(() {});
-    instrumentChoiceDropDown.addListener(() {});
+    lotSizeField.addListener(() {});
     entryPriceTextField.addListener(() {});
     exitPriceTextField.addListener(() {});
     targetPointsTextField.addListener(() {});
@@ -28,10 +25,13 @@ class JournalController extends GetxController {
 
   @override
   onClose() {
+    lotSizeField.dispose();
     entryPriceTextField.dispose();
     exitPriceTextField.dispose();
     targetPointsTextField.dispose();
     stopPointsTextField.dispose();
     super.onClose();
   }
+
+  void saveJournalEntry() async {}
 }

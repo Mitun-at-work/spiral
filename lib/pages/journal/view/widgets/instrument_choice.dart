@@ -40,7 +40,6 @@ class InstrumentChoice extends StatelessWidget {
           GetBuilder<JournalController>(builder: (controller) {
             return DropdownButton<String>(
               alignment: Alignment.centerRight,
-              focusNode: controller.instrumentChoiceDropDown,
               underline: const SizedBox(),
               style: const TextStyle(
                   fontSize: 18,

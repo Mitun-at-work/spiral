@@ -32,7 +32,6 @@ class TrendChoice extends StatelessWidget {
           GetBuilder<JournalController>(builder: (controller) {
             return DropdownButton<String>(
               alignment: Alignment.bottomRight,
-              focusNode: controller.orderTypeDropDown,
               underline: const SizedBox(),
               style: const TextStyle(
                   fontSize: 18,

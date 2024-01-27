@@ -36,7 +36,6 @@ class StatergyChoice extends StatelessWidget {
           GetBuilder<JournalController>(builder: (controller) {
             return DropdownButton<String>(
               alignment: Alignment.topLeft,
-              focusNode: controller.orderTypeDropDown,
               underline: const SizedBox(),
               style: const TextStyle(
                   fontSize: 18,
