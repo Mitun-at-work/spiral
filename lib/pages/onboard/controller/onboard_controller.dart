@@ -1,0 +1,6 @@
+import 'package:get/get.dart';
+
+class OnBoardController extends GetxController {
+  RxString pickedImage = "".obs;
+  String userName = "";
+}

@@ -6,6 +6,7 @@ import 'package:sih24/firebase_options.dart';
 import 'package:sih24/pages/auth/controller/auth_controller.dart';
 import 'package:sih24/pages/home/controller/home_controller.dart';
 import 'package:sih24/pages/journal/controller/jounal_controller.dart';
+import 'package:sih24/pages/onboard/controller/onboard_controller.dart';
 import 'package:sih24/utils/constants.dart';
 
 class DependedncyInjection {
@@ -15,6 +16,7 @@ class DependedncyInjection {
     final directory = await getApplicationDocumentsDirectory();
     applicationDocumentsDirectory = directory.path;
     Hive.init(directory.path);
+    Get.put(OnBoardController());
     Get.put(AuthController());
   }
 
