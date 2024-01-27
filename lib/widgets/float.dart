@@ -5,7 +5,7 @@ FloatingActionButton buildFloat(BuildContext context) {
     elevation: 0,
     shape: const CircleBorder(),
     onPressed: () {
-      Navigator.pushNamed(context, "jounal");
+      Navigator.pushNamed(context, "journal");
     },
     child: const Icon(Icons.segment_rounded),
   );

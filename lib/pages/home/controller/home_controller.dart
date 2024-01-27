@@ -19,7 +19,10 @@ class HomeController extends GetxController {
   @override
   Future<void> onInit() async {
     await hiveManager.initializeHive();
-    journalData.value = await hiveManager.readFromHive('data');
+    var result = await hiveManager.readFromHive('data');
+    if (result != null) {
+      journalData.value = result;
+    }
     super.onInit();
     update();
   }

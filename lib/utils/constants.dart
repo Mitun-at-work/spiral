@@ -1,3 +1,5 @@
+import 'package:sih24/dependencies/dependency_injection.dart';
+
 final List<int> cipher = [
   42,
   113,
@@ -34,3 +36,5 @@ final List<int> cipher = [
 ];
 
 String applicationDocumentsDirectory = "";
+
+final DependedncyInjection dependedncyInjection = DependedncyInjection();

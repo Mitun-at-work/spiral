@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sih24/dependencies/dependency_injection.dart';
+import 'package:sih24/utils/constants.dart';
 import 'package:sih24/widgets/build_app.dart';
 import 'package:sih24/widgets/build_route.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DependedncyInjection().injectDependency();
+  await dependedncyInjection.injectBasics();
   runApp(const MyApp());
 }
 
@@ -18,8 +18,7 @@ class MyApp extends StatelessWidget {
       routes: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: buildApp(),
-      initialRoute: "journal",
-      // home: const HomeScreen(),
+      initialRoute: "auth",
     );
   }
 }
