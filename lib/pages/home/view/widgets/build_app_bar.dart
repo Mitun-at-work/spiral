@@ -1,35 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sih24/pages/home/controller/home_controller.dart';
 
-AppBar buildAppBar() {
-  return AppBar(
-    elevation: 4,
-    title: const Text(
-      "Trading Journal",
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 28,
-      ),
-    ),
-    actions: const [
-      Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Stack(
-          children: [
-            Positioned(
-              right: 2,
-              bottom: 18,
+buildAppBar() {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(kToolbarHeight),
+    child: GetBuilder<HomeController>(
+      builder: (controller) {
+        return AppBar(
+          elevation: 4,
+          title: Text(
+            "Welcome ${controller.userName.value.capitalizeFirst} !",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 28,
+            ),
+          ),
+          actions: const [
+            Padding(
+              padding: EdgeInsets.all(8.0),
               child: CircleAvatar(
-                backgroundColor: Colors.pink,
-                radius: 5,
+                child: Icon(Icons.help),
               ),
-            ),
-            Icon(
-              Icons.local_fire_department_sharp,
-              size: 30,
-            ),
+            )
           ],
-        ),
-      )
-    ],
+        );
+      },
+    ),
   );
 }

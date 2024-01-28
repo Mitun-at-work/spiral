@@ -17,7 +17,6 @@ class AuthScreen extends StatelessWidget {
                 GetBuilder<AuthController>(builder: (controller) {
                   return IconButton(
                     autofocus: true,
-                    focusNode: controller.authControllerIconButton,
                     onPressed: () async {
                       if (await controller.authenticateUser()) {
                         if (context.mounted) {

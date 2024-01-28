@@ -1,4 +1,5 @@
 import 'package:sih24/dependencies/dependency_injection.dart';
+import 'package:sih24/utils/hive_manager.dart';
 
 final List<int> cipher = [
   42,
@@ -36,5 +37,7 @@ final List<int> cipher = [
 ];
 
 String applicationDocumentsDirectory = "";
+
+final HiveManager hiveManager = HiveManager();
 
 final DependedncyInjection dependedncyInjection = DependedncyInjection();

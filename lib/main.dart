@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       routes: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: buildApp(),
-      initialRoute: "onboard",
+      initialRoute: dependedncyInjection.route,
     );
   }
 }

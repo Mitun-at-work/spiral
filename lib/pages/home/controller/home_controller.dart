@@ -1,29 +1,31 @@
 import 'package:get/get.dart';
-import 'package:sih24/utils/hive_manager.dart';
-
-Map<String, dynamic> testJournalData = {
-  'Order Type': 0,
-  'Buy Price': 50,
-  'Sell Price': 20,
-  "Lot Size": 100,
-  "Target Points": 12,
-  "Stop Loss Points": 2,
-  "Take Profit Points": 12,
-  "Market": "Forex",
-};
+import 'package:sih24/utils/constants.dart';
 
 class HomeController extends GetxController {
-  final HiveManager hiveManager = HiveManager();
+  RxString userName = "".obs;
+  Rx userProfilePicture = "".obs;
   RxList journalData = [].obs;
 
-  @override
-  Future<void> onInit() async {
-    await hiveManager.initializeHive();
-    var result = await hiveManager.readFromHive('data');
+  Future<void> loadUserDetails() async {
+    final userDeatils =
+        await hiveManager.readFromHive("userDetails", 'userProfile');
+    userName.value = userDeatils['name']!;
+    userProfilePicture.value = userDeatils['profilePic'];
+  }
+
+  Future<void> loadJournalData() async {
+    await hiveManager.initializeHive('journal');
+    var result = await hiveManager.readFromHive('journal', 'data');
     if (result != null) {
       journalData.value = result;
     }
+  }
+
+  @override
+  Future<void> onInit() async {
     super.onInit();
+    await loadJournalData();
+    await loadUserDetails();
     update();
   }
 }

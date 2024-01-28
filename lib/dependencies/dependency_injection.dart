@@ -12,12 +12,20 @@ import 'package:sih24/utils/constants.dart';
 class DependedncyInjection {
   // Basic Dependencies
 
+  String route = "onboard";
+
   Future<void> injectBasics() async {
     final directory = await getApplicationDocumentsDirectory();
     applicationDocumentsDirectory = directory.path;
     Hive.init(directory.path);
-    Get.put(OnBoardController());
-    Get.put(AuthController());
+    await hiveManager.initializeHive("userDetails");
+    await hiveManager.verifyUser();
+    if (hiveManager.isExistingUser) {
+      Get.put(AuthController());
+      route = "auth";
+    } else {
+      Get.put(OnBoardController());
+    }
   }
 
   // Advanced Dependencies

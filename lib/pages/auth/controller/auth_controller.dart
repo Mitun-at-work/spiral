@@ -1,11 +1,9 @@
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:sih24/utils/constants.dart';
 
 class AuthController extends GetxController {
   RxBool isAuthenticated = false.obs;
-  final FocusNode authControllerIconButton = FocusNode();
 
   Future<bool> authenticateUser() async {
     if (!isAuthenticated.value) {
@@ -17,9 +15,8 @@ class AuthController extends GetxController {
           ));
       isAuthenticated.value = didAuthenticate;
       if (isAuthenticated.value) {
-        dependedncyInjection.injectAdvanced();
+        await dependedncyInjection.injectAdvanced();
         update();
-
         printInfo(info: "Authenticated");
         return true;
       }

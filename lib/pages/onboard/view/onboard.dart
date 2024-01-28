@@ -9,7 +9,7 @@ class OnboardScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.candlestick_chart_outlined),
         onPressed: () {
-          Navigator.pushNamed(context, 'user');
+          Navigator.pushNamed(context, 'uName');
         },
       ),
       body: SafeArea(
