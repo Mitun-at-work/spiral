@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sih24/pages/home/controller/home_controller.dart';
@@ -16,13 +18,25 @@ buildAppBar() {
               fontSize: 28,
             ),
           ),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                child: Icon(Icons.help),
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 10),
+              width: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: FileImage(
+                    File(
+                      controller.userProfilePicture.value,
+                    ),
+                  ),
+                ),
               ),
-            )
+            ),
+            // Image.file(
+            //   ,
+            // ),
           ],
         );
       },

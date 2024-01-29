@@ -15,16 +15,10 @@ class AuthScreen extends StatelessWidget {
             child: Column(
               children: [
                 GetBuilder<AuthController>(builder: (controller) {
+                  controller.authenticateUser();
                   return IconButton(
                     autofocus: true,
-                    onPressed: () async {
-                      if (await controller.authenticateUser()) {
-                        if (context.mounted) {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, 'home', (route) => false);
-                        }
-                      }
-                    },
+                    onPressed: () => controller.authenticateUser(),
                     icon: const Icon(
                       Icons.lock_outline_rounded,
                       size: 50,

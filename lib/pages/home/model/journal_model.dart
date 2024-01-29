@@ -11,6 +11,8 @@ class JournalModel {
   final double jounalLotSize;
   final double journalLotSize;
   final int journalMarketTag;
+
+  // Model
   JournalModel({
     required this.journalOrderType,
     required this.journalInstrument,

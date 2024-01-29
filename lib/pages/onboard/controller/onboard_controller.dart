@@ -12,6 +12,7 @@ class OnBoardController extends GetxController {
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       pickedImage.value = image.path;
+      print(image.path);
       update();
     }
   }

@@ -111,6 +111,23 @@ class EntryDetails extends StatelessWidget {
             ),
           ),
 
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: TextFormField(
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              focusNode: controller.stopPointsTextField,
+              keyboardType: const TextInputType.numberWithOptions(),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.shield_outlined),
+                label: Text("Stop Loss Points"),
+                hintText: "Enter your SL points",
+              ),
+            ),
+          ),
+
           //
 
           const SizedBox(height: 50),
