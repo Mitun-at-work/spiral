@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: buildAppBar(),
       body: SafeArea(
         child: GetBuilder<HomeController>(builder: (controller) {
+          print(controller.journalData);
           return ListView.builder(
             itemCount: controller.journalData.length,
             itemBuilder: (context, index) {

@@ -10,8 +10,6 @@ import 'package:sih24/pages/onboard/controller/onboard_controller.dart';
 import 'package:sih24/utils/constants.dart';
 
 class DependedncyInjection {
-  // Basic Dependencies
-
   String route = "onboard";
 
   Future<void> injectBasics() async {

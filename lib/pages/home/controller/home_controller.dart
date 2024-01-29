@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:sih24/utils/constants.dart';
 
@@ -27,5 +29,10 @@ class HomeController extends GetxController {
     await loadJournalData();
     await loadUserDetails();
     update();
+  }
+
+  Future<void> updateHive() async {
+    await hiveManager.writeToHive('journal', 'data', journalData.value);
+    log("Sucessfully Written");
   }
 }

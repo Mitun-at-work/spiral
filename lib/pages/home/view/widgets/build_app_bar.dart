@@ -18,22 +18,22 @@ buildAppBar() {
               fontSize: 28,
             ),
           ),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 10),
-              width: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: FileImage(
-                    File(
-                      controller.userProfilePicture.value,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          actions: const [
+            // Container(
+            //   margin: const EdgeInsets.only(right: 10),
+            //   width: 40,
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     image: DecorationImage(
+            //       fit: BoxFit.cover,
+            //       image: FileImage(
+            //         File(
+            //           controller.userProfilePicture.value,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             // Image.file(
             //   ,
             // ),

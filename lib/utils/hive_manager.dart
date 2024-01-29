@@ -30,7 +30,7 @@ class HiveManager {
   }
 
   // Write data to the specified box
-  Future<void> writeToHive(String boxName, String key, Map value) async {
+  Future<void> writeToHive(String boxName, String key, dynamic value) async {
     final box = _hiveBoxes[boxName];
     if (box != null) {
       await box.put(key, value);

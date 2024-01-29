@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:sih24/pages/journal/controller/jounal_controller.dart';
+import 'package:sih24/pages/journal/model/journal_entry_model.dart';
 
 class EntryDetails extends StatelessWidget {
   const EntryDetails({super.key});
@@ -26,7 +27,8 @@ class EntryDetails extends StatelessWidget {
                 hintText: "Enter your entry price",
               ),
               onFieldSubmitted: (value) {
-                controller.exitPriceTextField.requestFocus();
+                journalEntryModel.entryPrice = double.parse(value);
+                controller.lotSizeField.requestFocus();
               },
             ),
           ),
@@ -46,6 +48,7 @@ class EntryDetails extends StatelessWidget {
                 hintText: "Enter your Lot Size",
               ),
               onFieldSubmitted: (value) {
+                journalEntryModel.lotSize = double.parse(value);
                 controller.exitPriceTextField.requestFocus();
               },
             ),
@@ -67,6 +70,7 @@ class EntryDetails extends StatelessWidget {
                 hintText: "Enter your exit price",
               ),
               onFieldSubmitted: (value) {
+                journalEntryModel.exitPrice = double.parse(value);
                 controller.targetPointsTextField.requestFocus();
               },
             ),
@@ -88,6 +92,7 @@ class EntryDetails extends StatelessWidget {
                 hintText: "Enter your target points",
               ),
               onFieldSubmitted: (value) {
+                journalEntryModel.targetPoints = double.parse(value);
                 controller.stopPointsTextField.requestFocus();
               },
             ),
@@ -97,11 +102,15 @@ class EntryDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextFormField(
+              focusNode: controller.stopPointsTextField,
+              onFieldSubmitted: (value) {
+                journalEntryModel.stopLossPoints = double.parse(value);
+                controller.tradeMessageTextField.requestFocus();
+              },
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
-              focusNode: controller.stopPointsTextField,
               keyboardType: const TextInputType.numberWithOptions(),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.shield_outlined),
@@ -114,16 +123,20 @@ class EntryDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextFormField(
+              onFieldSubmitted: (newValue) {
+                print("New Value is $newValue");
+                journalEntryModel.tradeDescription = newValue;
+                controller.saveJournalEntry();
+              },
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
-              focusNode: controller.stopPointsTextField,
-              keyboardType: const TextInputType.numberWithOptions(),
+              focusNode: controller.tradeMessageTextField,
               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.shield_outlined),
-                label: Text("Stop Loss Points"),
-                hintText: "Enter your SL points",
+                prefixIcon: Icon(Icons.messenger_outline_sharp),
+                label: Text("Trade Message"),
+                hintText: "Enter your trade message",
               ),
             ),
           ),

@@ -9,8 +9,8 @@ class JournalModel {
   final double journalTargetPrice;
   final double journalTakeProfitPrice;
   final double jounalLotSize;
-  final double journalLotSize;
   final int journalMarketTag;
+  final String journalMessage;
 
   // Model
   JournalModel({
@@ -24,8 +24,8 @@ class JournalModel {
     required this.journalTargetPrice,
     required this.journalTakeProfitPrice,
     required this.jounalLotSize,
-    required this.journalLotSize,
     required this.journalMarketTag,
+    required this.journalMessage,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,8 +40,8 @@ class JournalModel {
       'journalTargetPrice': journalTargetPrice,
       'journalTakeProfitPrice': journalTakeProfitPrice,
       'jounalLotSize': jounalLotSize,
-      'journalLotSize': journalLotSize,
       'journalMarketTag': journalMarketTag,
+      'journalMessage': journalMessage,
     };
   }
 
@@ -57,8 +57,8 @@ class JournalModel {
       journalTargetPrice: map['journalTargetPrice'] as double,
       journalTakeProfitPrice: map['journalTakeProfitPrice'] as double,
       jounalLotSize: map['jounalLotSize'] as double,
-      journalLotSize: map['journalLotSize'] as double,
       journalMarketTag: map['journalMarketTag'] as int,
+      journalMessage: map['journalMessage'] as String,
     );
   }
 }
