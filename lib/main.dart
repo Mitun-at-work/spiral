@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sih24/pages/onboard/controller/onboard_controller.dart';
-import 'package:sih24/utils/constants.dart';
 import 'package:sih24/widgets/build_app.dart';
 import 'package:sih24/widgets/build_route.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dependedncyInjection.injectBasics();
-  Get.put(OnBoardController());
+  // await dependedncyInjection.injectBasics();
   runApp(const MyApp());
 }
 
@@ -21,7 +18,7 @@ class MyApp extends StatelessWidget {
       routes: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: buildApp(),
-      initialRoute: dependedncyInjection.route,
+      initialRoute: "screener",
     );
   }
 }

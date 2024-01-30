@@ -7,6 +7,7 @@ class AuthController extends GetxController {
 
   // Auth User
   Future<void> authenticateUser() async {
+    await auth.stopAuthentication();
     final bool isAuthenticated = await auth.authenticate(
         localizedReason: 'Please authenticate to your trading jornal',
         options: const AuthenticationOptions(

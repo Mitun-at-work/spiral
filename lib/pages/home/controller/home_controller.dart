@@ -26,13 +26,13 @@ class HomeController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    await loadJournalData();
     await loadUserDetails();
+    await loadJournalData();
     update();
   }
 
   Future<void> updateHive() async {
-    await hiveManager.writeToHive('journal', 'data', journalData.value);
+    await hiveManager.writeToHive('journal', 'data', journalData);
     log("Sucessfully Written");
   }
 }

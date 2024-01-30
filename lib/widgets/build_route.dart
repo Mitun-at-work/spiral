@@ -5,6 +5,7 @@ import 'package:sih24/pages/journal/view/jounal.dart';
 import 'package:sih24/pages/onboard/view/onboard.dart';
 import 'package:sih24/pages/onboard/view/widgets/user_details_name.dart';
 import 'package:sih24/pages/onboard/view/widgets/user_image.dart';
+import 'package:sih24/pages/screener/screener.dart';
 
 Map<String, WidgetBuilder> get appRoutes {
   return {
@@ -14,5 +15,6 @@ Map<String, WidgetBuilder> get appRoutes {
     "auth": (context) => const AuthScreen(),
     "home": (context) => const HomeScreen(),
     "journal": (context) => const JournalScreen(),
+    "screener": (context) => const BottomSelectionWidget(),
   };
 }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sih24/pages/home/controller/home_controller.dart';
@@ -17,16 +18,17 @@ class HomeScreen extends StatelessWidget {
       appBar: buildAppBar(),
       body: SafeArea(
         child: GetBuilder<HomeController>(builder: (controller) {
-          print(controller.journalData);
           return ListView.builder(
             itemCount: controller.journalData.length,
             itemBuilder: (context, index) {
-              return const JournalTile(
-                instrumentSymbol: "EURUSD",
-                buyPrice: 2,
-                sellPrice: 1,
-                lotSize: 10,
-                orderType: 0,
+              final data = controller.journalData[index];
+              return JournalTile(
+                instrumentSymbol: data['journalInstrument'],
+                buyPrice: data['jounalEntryPrice'],
+                sellPrice: data['journalSellPrice'],
+                lotSize: data['jounalLotSize'],
+                orderType:
+                    data['journalOrderType'] == 'Market Buy Order' ? 1 : 0,
               );
             },
           );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sih24/pages/home/controller/functions/get_color.dart';
-import 'package:sih24/pages/home/view/widgets/journal_info_tile.dart';
 
 class JournalTile extends StatelessWidget {
   const JournalTile({
@@ -39,53 +38,11 @@ class JournalTile extends StatelessWidget {
         ),
       ),
       trailing: Text(
-        "${(buyPrice - sellPrice).abs()}",
+        "${((buyPrice - sellPrice) * lotSize).abs()}",
         style: TextStyle(
           color: getColor(buyPrice, sellPrice, orderType),
         ),
       ),
-      childrenPadding: const EdgeInsets.all(0),
-      expandedCrossAxisAlignment: CrossAxisAlignment.start,
-      expandedAlignment: Alignment.centerLeft,
-      children: const [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            JournalInfoTile(
-              journalInfoTitle: "Target",
-              jounalInfoParamter: "200",
-            ),
-            JournalInfoTile(
-              journalInfoTitle: "Stop Loss",
-              jounalInfoParamter: "210",
-            ),
-            JournalInfoTile(
-              journalInfoTitle: "Take Profit",
-              jounalInfoParamter: "180",
-            )
-          ],
-        ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            JournalInfoTile(
-              journalInfoTitle: "Trend",
-              jounalInfoParamter: "Sideways",
-            ),
-            JournalInfoTile(
-              journalInfoTitle: "Risk:Reward",
-              jounalInfoParamter: "1:7",
-            ),
-            JournalInfoTile(
-              journalInfoTitle: "Tag",
-              jounalInfoParamter: "Forex",
-            )
-          ],
-        ),
-        // )
-        Divider(),
-      ],
     );
   }
 }

@@ -13,6 +13,7 @@ class DependedncyInjection {
   String route = "onboard";
 
   Future<void> injectBasics() async {
+    Get.put(OnBoardController());
     final directory = await getApplicationDocumentsDirectory();
     applicationDocumentsDirectory = directory.path;
     Hive.init(directory.path);
