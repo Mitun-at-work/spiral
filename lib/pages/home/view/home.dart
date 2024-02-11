@@ -1,6 +1,9 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sih24/pages/home/controller/home_controller.dart';
+import 'package:sih24/pages/home/model/journal_model.dart';
 import 'package:sih24/pages/home/view/widgets/build_app_bar.dart';
 import 'package:sih24/pages/home/view/widgets/journal_tile.dart';
 import 'package:sih24/widgets/float.dart';
@@ -20,14 +23,10 @@ class HomeScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: controller.journalData.length,
             itemBuilder: (context, index) {
-              final data = controller.journalData[index];
+              JournalModel journalModelFromDict = JournalModel.fromJson(
+                  controller.journalData[index].toString());
               return JournalTile(
-                instrumentSymbol: data['journalInstrument'] ?? "",
-                buyPrice: data['jounalEntryPrice'] ?? 1.2,
-                sellPrice: data['journalSellPrice'] ?? 1.2,
-                lotSize: data['jounalLotSize'] ?? 1.2,
-                orderType:
-                    data['journalOrderType'] == 'Market Buy Order' ? 1 : 0,
+                journalModel: journalModelFromDict,
               );
             },
           );

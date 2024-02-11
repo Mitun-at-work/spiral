@@ -59,7 +59,6 @@ class JournalController extends GetxController {
   }
 
   Future<void> saveJournalEntry() async {
-    log("Initialised");
     final JournalModel journalModel = JournalModel(
       journalOrderType: buyType.value,
       journalInstrument: instrumentType.value,

@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:sih24/pages/home/controller/functions/get_color.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:sih24/pages/home/model/journal_model.dart';
+import 'package:sih24/utils/export_headers.dart';
 
 class JournalTile extends StatelessWidget {
   const JournalTile({
     super.key,
-    required this.instrumentSymbol,
-    required this.buyPrice,
-    required this.sellPrice,
-    required this.lotSize,
-    required this.orderType,
+    required this.journalModel,
   });
 
-  final int orderType;
-  final String instrumentSymbol;
-  final double buyPrice, sellPrice, lotSize;
+  final JournalModel journalModel;
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
+    return ListTile(
+      onTap: () {},
+      // onTap: () => Get.to(DetailPage(journalModel: journalModel)),
       subtitle: Text(
-        "${lotSize.round().toString()} Lots",
+        "${journalModel.jounalLotSize.round().toString()} Lots",
         style: const TextStyle(
             fontWeight: FontWeight.bold, fontSize: 18, color: Colors.blueGrey),
       ),
       title: Text(
-        "$buyPrice - $sellPrice",
+        "${journalModel.jounalEntryPrice - journalModel.journalSellPrice}",
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
@@ -33,33 +30,22 @@ class JournalTile extends StatelessWidget {
         ),
       ),
       leading: Text(
-        instrumentSymbol,
+        journalModel.journalInstrument,
         style: TextStyle(
-          color: orderType == 0 ? Colors.red : Colors.blue,
+          color: journalModel.journalOrderType == 'Sell'
+              ? Colors.red
+              : Colors.blue,
         ),
       ),
       trailing: Text(
-        "${((buyPrice - sellPrice) * lotSize).abs()}",
+        "${((journalModel.jounalEntryPrice - journalModel.journalSellPrice) * journalModel.jounalLotSize).abs()}",
         style: TextStyle(
-          color: getColor(buyPrice, sellPrice, orderType),
+          color: getColor(
+              journalModel.jounalEntryPrice,
+              journalModel.journalSellPrice,
+              journalModel.journalOrderType == "Buy" ? 1 : 0),
         ),
       ),
-      children: [
-        ElevatedButton(
-          onPressed: () async {
-            Navigator.pushNamed(context, 'details');
-            // await launchBrowser(
-            //     "https://www.chart-trader.com/tracking/?column=3&list=OANDA:EURUSD,BINANCE:BTCUSDT,BINANCE:ETHUSDT,OANDA:XAUUSD,NSE:NIFTY500_MULTICAP&interval=D&studies=BB@tv-basicstudies,RSI@tv-basicstudies&timezone=UTC&theme=light");
-          },
-          child: const Text("Click Me"),
-        )
-      ],
     );
-  }
-}
-
-Future<void> launchBrowser(String url) async {
-  if (!await launchUrl(Uri.parse(url))) {
-    throw Exception('Could not launch $url');
   }
 }

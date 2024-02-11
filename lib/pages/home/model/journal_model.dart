@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class JournalModel {
   final String journalOrderType;
   final String journalInstrument;
@@ -27,6 +30,81 @@ class JournalModel {
     required this.journalMarketTag,
     required this.journalMessage,
   });
+
+  factory JournalModel.fromJson(String jsonString) {
+    Map<String, dynamic> jsonMap = json.decode(jsonString);
+    return JournalModel(
+      journalOrderType: jsonMap['journalOrderType'] ?? '',
+      journalInstrument: jsonMap['journalInstrument'] ?? '',
+      jounralMarketTrend: jsonMap['jounralMarketTrend'] ?? '',
+      jounralEntryStatergy: jsonMap['jounralEntryStatergy'] ?? '',
+      jounalEntryPrice: jsonMap['jounalEntryPrice'] != null
+          ? (jsonMap['jounalEntryPrice'] is int
+              ? (jsonMap['jounalEntryPrice'] as int).toDouble()
+              : jsonMap['jounalEntryPrice'])
+          : 0.0,
+      journalSellPrice: jsonMap['journalSellPrice'] != null
+          ? (jsonMap['journalSellPrice'] is int
+              ? (jsonMap['journalSellPrice'] as int).toDouble()
+              : jsonMap['journalSellPrice'])
+          : 0.0,
+      journalStopPrice: jsonMap['journalStopPrice'] != null
+          ? (jsonMap['journalStopPrice'] is int
+              ? (jsonMap['journalStopPrice'] as int).toDouble()
+              : jsonMap['journalStopPrice'])
+          : 0.0,
+      journalTargetPrice: jsonMap['journalTargetPrice'] != null
+          ? (jsonMap['journalTargetPrice'] is int
+              ? (jsonMap['journalTargetPrice'] as int).toDouble()
+              : jsonMap['journalTargetPrice'])
+          : 0.0,
+      journalTakeProfitPrice: jsonMap['journalTakeProfitPrice'] != null
+          ? (jsonMap['journalTakeProfitPrice'] is int
+              ? (jsonMap['journalTakeProfitPrice'] as int).toDouble()
+              : jsonMap['journalTakeProfitPrice'])
+          : 0.0,
+      jounalLotSize: jsonMap['jounalLotSize'] != null
+          ? (jsonMap['jounalLotSize'] is int
+              ? jsonMap['jounalLotSize']
+              : (jsonMap['jounalLotSize'] as String).isEmpty
+                  ? 0
+                  : int.parse(jsonMap['jounalLotSize']))
+          : 0,
+      journalMarketTag: jsonMap['journalMarketTag'] ?? '',
+      journalMessage: jsonMap['journalMessage'] ?? '',
+    );
+  }
+
+  JournalModel copyWith({
+    String? journalOrderType,
+    String? journalInstrument,
+    String? jounralMarketTrend,
+    String? jounralEntryStatergy,
+    double? jounalEntryPrice,
+    double? journalSellPrice,
+    double? journalStopPrice,
+    double? journalTargetPrice,
+    double? journalTakeProfitPrice,
+    double? jounalLotSize,
+    int? journalMarketTag,
+    String? journalMessage,
+  }) {
+    return JournalModel(
+      journalOrderType: journalOrderType ?? this.journalOrderType,
+      journalInstrument: journalInstrument ?? this.journalInstrument,
+      jounralMarketTrend: jounralMarketTrend ?? this.jounralMarketTrend,
+      jounralEntryStatergy: jounralEntryStatergy ?? this.jounralEntryStatergy,
+      jounalEntryPrice: jounalEntryPrice ?? this.jounalEntryPrice,
+      journalSellPrice: journalSellPrice ?? this.journalSellPrice,
+      journalStopPrice: journalStopPrice ?? this.journalStopPrice,
+      journalTargetPrice: journalTargetPrice ?? this.journalTargetPrice,
+      journalTakeProfitPrice:
+          journalTakeProfitPrice ?? this.journalTakeProfitPrice,
+      jounalLotSize: jounalLotSize ?? this.jounalLotSize,
+      journalMarketTag: journalMarketTag ?? this.journalMarketTag,
+      journalMessage: journalMessage ?? this.journalMessage,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

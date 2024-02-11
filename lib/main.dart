@@ -1,3 +1,4 @@
+import 'package:sih24/pages/detail/view/detail.dart';
 import 'package:sih24/utils/export_headers.dart';
 
 Future<void> main() async {
