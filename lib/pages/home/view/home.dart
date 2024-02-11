@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sih24/pages/home/controller/home_controller.dart';
@@ -23,10 +22,10 @@ class HomeScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final data = controller.journalData[index];
               return JournalTile(
-                instrumentSymbol: data['journalInstrument'],
-                buyPrice: data['jounalEntryPrice'],
-                sellPrice: data['journalSellPrice'],
-                lotSize: data['jounalLotSize'],
+                instrumentSymbol: data['journalInstrument'] ?? "",
+                buyPrice: data['jounalEntryPrice'] ?? 1.2,
+                sellPrice: data['journalSellPrice'] ?? 1.2,
+                lotSize: data['jounalLotSize'] ?? 1.2,
                 orderType:
                     data['journalOrderType'] == 'Market Buy Order' ? 1 : 0,
               );

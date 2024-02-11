@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sih24/pages/home/controller/functions/get_color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JournalTile extends StatelessWidget {
   const JournalTile({
@@ -43,6 +44,22 @@ class JournalTile extends StatelessWidget {
           color: getColor(buyPrice, sellPrice, orderType),
         ),
       ),
+      children: [
+        ElevatedButton(
+          onPressed: () async {
+            Navigator.pushNamed(context, 'details');
+            // await launchBrowser(
+            //     "https://www.chart-trader.com/tracking/?column=3&list=OANDA:EURUSD,BINANCE:BTCUSDT,BINANCE:ETHUSDT,OANDA:XAUUSD,NSE:NIFTY500_MULTICAP&interval=D&studies=BB@tv-basicstudies,RSI@tv-basicstudies&timezone=UTC&theme=light");
+          },
+          child: const Text("Click Me"),
+        )
+      ],
     );
+  }
+}
+
+Future<void> launchBrowser(String url) async {
+  if (!await launchUrl(Uri.parse(url))) {
+    throw Exception('Could not launch $url');
   }
 }
